@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<title>010 正则表达式匹配</title>
+	<meta name="keywords" content="xiaoxiyouran" />
+	<meta name="description" content="xiaoxiyouran's Docs" />
+	<link href="../../packages/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../../packages/css/style.css" rel="stylesheet" />
+	<link href="../../packages/css/monokai_sublime.min.css" rel="stylesheet">
+	
+	<!-- 右上角的侧边导航栏 -->
+	<link rel="stylesheet" href="../../packages/hock_side_bar/css/sidebar.css"> <!--初始化文件-->
+	<script src="../../packages/hock_side_bar/js/sidebar.js"></script> <!--rem适配js-->
+	
+	<!--
+	<link href="<?php echo $base_url?>/css/bootstrap-theme.min.css" rel="stylesheet" />
+	-->
+	
+	<!-- To generate the side tree of the document itself. -->
+  <link rel="stylesheet" href="../../packages/generate_header_sidebar/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <style>
+  body {
+  background-color: white;
+  margin:0; padding:0;
+  // text-align: center;
+  overflow: scroll;
+  }
+  div, p, table, th, td {
+    list-style:none;
+    margin:8px; padding:0;
+    color:#333; font-size:12px;
+   Font-family: Helvetica, Tahoma, Arial, STXihei, “华文细黑”, “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, Heiti, “黑体”, sans-serif;
+  }
+  
+ // table{
+ //   border-collapse:collapse;
+ // }
+
+  //table, td, th{
+  //  border:1px solid black;   
+  //}
+  
+  .ztree li a.curSelectedNode {
+    padding-top: 0px;
+    background-color: #FFE6B0;
+    color: black;
+    height: 16px;
+    border: 1px #FFB951 solid;
+    opacity: 0.8;
+  }
+  .ztree{
+    overflow: auto;
+    height:100%;
+    min-height: 200px;
+    top: 0px;
+  }
+  </style>
+
+<!--
+  For Latex formula
+-->
+<!--
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\(","\)"]]}
+  });
+</script>
+-->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"]]}
+  });
+</script>
+ <script type="text/javascript" src="../../packages/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<!-- mermaid 画图 -->
+ <link rel="stylesheet" href="../../packages/mermaid-7.0.0/dist/mermaid.forest.css"/>
+ <script src="../../packages/mermaid-7.0.0/dist/mermaid.js"></script>
+ <script src="../../packages/mermaid-7.0.0/dist/dist/mermaid.full.js"></script>
+ <!-- <scrpt src="../../packages/mermaid-7.0.0/node_modules/d3/d3.js"></scrpt> -->
+ <!-- <script>mermaid.initialize({startOnLoad:true});</script>  -->
+ <script>
+	//browserify --entry src/mermaid.js -u d3 -o ./dist/mermaid.brow.slim.js
+			var mermaid_config = {
+					startOnLoad:true
+			}
+			mermaid.ganttConfig = {
+					titleTopMargin:25,
+					barHeight:20,
+					barGap:4,
+					topPadding:50,
+					leftPadding:75,
+					gridLineStartPadding:35,
+					fontSize:11,
+					numberSectionStyles:3,
+					axisFormatter: [
+							// Within a day
+							["%I:%M", function (d) {
+									return d.getHours();
+							}],
+							// Monday a week
+							["w. %U", function (d) {
+									return d.getDay() == 1;
+							}],
+							// Day within a week (not monday)
+							["%a %d", function (d) {
+									return d.getDay() && d.getDate() != 1;
+							}],
+							// within a month
+							["%b %d", function (d) {
+									return d.getDate() != 1;
+							}],
+							// Month
+							["%m-%y", function (d) {
+									return d.getMonth();
+							}]
+					]
+			};
+	</script>
+
+</head>
+<body>
+<!-- 右上角的悬浮 sidebar  -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <a href="#"> 目录 </a>
+   <iframe id="ha" src=" global_sidebar.html" name='left' frameborder="0" scrolling="auto" width="400"  height="100%">
+    您的浏览器不支持iframe，请升级
+   </iframe>  
+</div>
+
+<TABLE border=0 height=600px align=left>
+  <TR>
+    <TD width=260px align=left valign=top style="BORDER-RIGHT: #999999 1px dashed">
+      <ul id="tree" class="ztree">
+        
+      </ul>
+    </TD>
+    <TD width=770px align=left valign=top>
+
+<!---------------------------------------------------------------------------------------------------------------------------->
+<div class="container">
+<span style="font-size:20px;cursor:pointer;z-index: 9999; position: fixed; right: 0px; top: 0px;" onclick="openNav()">&#9776; 目录</span>
+ 
+<h1 id="010">010 正则表达式匹配</h1>
+<h2 id="_1">链接和考点</h2>
+<table style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>
+<thead>
+<tr>
+<th style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>LeetCode</th>
+<th style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>https://leetcode-cn.com/problems/regular-expression-matching/description/</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>考点</td>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>String, DP</td>
+</tr>
+<tr>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>难度</td>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>Hard</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="_2">题意</h2>
+<hr />
+<p>给定一个字符串 (<code>s</code>) 和一个字符模式 (<code>p</code>)。实现支持 <code>'.'</code> 和 <code>'*'</code> 的正则表达式匹配。</p>
+<pre><code>'.' 匹配任意单个字符。
+'*' 匹配零个或多个前面的元素。
+</code></pre>
+
+<p>匹配应该覆盖<strong>整个</strong>字符串 (<code>s</code>) ，而不是部分字符串。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li><code>s</code> 可能为空，且只包含从 <code>a-z</code> 的小写字母。</li>
+<li><code>p</code> 可能为空，且只包含从 <code>a-z</code> 的小写字母，以及字符 <code>.</code> 和 <code>*</code>。</li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<pre><code>输入:
+s = &quot;aa&quot;
+p = &quot;a&quot;
+输出: false
+解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。
+</code></pre>
+
+<p><strong>示例 2:</strong></p>
+<pre><code>输入:
+s = &quot;aa&quot;
+p = &quot;a*&quot;
+输出: true
+解释: '*' 代表可匹配零个或多个前面的元素, 即可以匹配 'a' 。因此, 重复 'a' 一次, 字符串可变为 &quot;aa&quot;。
+</code></pre>
+
+<p><strong>示例 3:</strong></p>
+<pre><code>输入:
+s = &quot;ab&quot;
+p = &quot;.*&quot;
+输出: true
+解释: &quot;.*&quot; 表示可匹配零个或多个('*')任意字符('.')。
+</code></pre>
+
+<p><strong>示例 4:</strong></p>
+<pre><code>输入:
+s = &quot;aab&quot;
+p = &quot;c*a*b&quot;
+输出: true
+解释: 'c' 可以不被重复, 'a' 可以被重复一次。因此可以匹配字符串 &quot;aab&quot;。
+</code></pre>
+
+<p><strong>示例 5:</strong></p>
+<pre><code>输入:
+s = &quot;mississippi&quot;
+p = &quot;mis*is*p*.&quot;
+输出: false
+</code></pre>
+
+<p><br></p>
+<h2 id="_3">分析</h2>
+<p>典型的DP问题， 定义 <code>P[i][j]</code> 为true， 如果 <code>s[0..i]</code> 匹配<code>p[0...j]</code>, 否则返回false.</p>
+<p>将问题分成如下三类：</p>
+<ul>
+<li>1） <code>p[j-1] != *</code> ,  单个字符匹配, 则</li>
+</ul>
+<p><code>P[i][j] = P[i - 1][j - 1]</code>, if <code>p[j - 1] != '*' &amp;&amp; (s[i - 1] = = p[j - 1] || p[j - 1] = = '.')</code>;</p>
+<ul>
+<li>2） <code>p[j-1]= = *</code>, 但是没有用上， “*” 可以重复 0 次；</li>
+</ul>
+<p><code>P[i][j] = P[i][j - 2]</code>, if <code>p[j - 1] <mark> '*'</code></p>
+<ul>
+<li>3）  <code>p[j-1]= = *</code>, 但是没有用上， “*” 在</mark>本次代表一个字符之前，已经用了1次及以上<mark>；</li>
+</ul>
+<p><code>P[i][j] = P[i - 1][j] &amp;&amp; (s[i - 1] </mark> p[j - 2] || p[j - 2] <mark> '.')</code>, if <code>p[j - 1] </mark> '*'</code> and the pattern repeats for at least <code>1</code> times.</p>
+<p>注意： <mark><strong>“*” 是匹配掐年的0个或多个字符，而非任意字符。</strong></mark></p>
+<pre><code class="cpp">'.' 匹配任意单个字符。
+'*' 匹配零个或多个前面的元素。
+</code></pre>
+
+<p><br></p>
+<h2 id="_4">参考答案</h2>
+<p>时间复杂度：</p>
+<p>空间复杂度：</p>
+<p>DP问题的答案如下：</p>
+<pre><code class="cpp">#include &quot;GlobalHead.h&quot;
+using namespace std;
+
+
+class Solution {
+	public:
+		bool isMatch(string s, string p) {
+			int m = s.length(), n = p.length();
+			vector&lt;vector&lt;bool&gt; &gt; dp(m + 1, vector&lt;bool&gt; (n + 1, false));
+			dp[0][0] = true;
+			for (int i = 0; i &lt;= m; i++){
+				for (int j = 1; j &lt;= n; j++){
+					if (p[j - 1] == '*')
+						dp[i][j] = dp[i][j - 2] || (i &gt; 0 &amp;&amp; (s[i - 1] == p[j - 2] || p[j - 2] == '.') &amp;&amp; dp[i - 1][j]);
+					else dp[i][j] = i &gt; 0 &amp;&amp; dp[i - 1][j - 1] &amp;&amp; (s[i - 1] == p[j - 1] || p[j - 1] == '.');
+					cout &lt;&lt; i &lt;&lt;&quot;,&quot; &lt;&lt; j &lt;&lt; &quot;:&quot; &lt;&lt;dp[i][j] &lt;&lt; '\t';
+				}
+				cout &lt;&lt; endl;
+			}
+
+
+			return dp[m][n];
+		}
+};
+
+int main(){
+	string s = &quot;aaa&quot;;
+	string p = &quot;a*&quot;;
+
+	std::cout &lt;&lt; Solution().isMatch(s,p) &lt;&lt; std::endl;
+}
+
+
+/* output
+0,1:0   0,2:1   
+1,1:1   1,2:1   
+2,1:0   2,2:1   
+3,1:0   3,2:1   
+1
+ */
+</code></pre>
+
+<p><br></p>
+<p>另附参考程序</p>
+<p>C++ 程序如下：</p>
+<pre><code class="cpp">class Solution {
+public:
+	bool isMatch(string s, string p) {
+		if (p.empty())    return s.empty();
+
+		if ('*' == p[1])
+			// x* matches empty string or at least one character: x* -&gt; xx*
+			// *s is to ensure s is non-empty
+			return (isMatch(s, p.substr(2)) || !s.empty() &amp;&amp; (s[0] == p[0] || '.' == p[0]) &amp;&amp; isMatch(s.substr(1), p));
+		else
+			return !s.empty() &amp;&amp; (s[0] == p[0] || '.' == p[0]) &amp;&amp; isMatch(s.substr(1), p.substr(1));
+	}
+};
+</code></pre>
+
+<p><br></p>
+
+
+<hr/>
+<div class="footer">
+	Copyright &copy; xiaoxiyouran. All rights reserved.
+
+</div>
+
+</div> <!-- /container -->
+
+<!---------------------------------------------------------------------------------------------------------------------------->
+
+        </TD>
+  </TR>
+</TABLE>
+
+<!-- 请注意，以下两个部分的代码执行是有顺序的，必须严格按照这个顺序来。另外，放在底部是为了优化界面，使加载速度更快 -->
+<!-- 为了优化代码风格 -->
+<script src="../../packages/js/jquery-1.9.1.min.js" ></script>
+<script src="../../packages/js/bootstrap.min.js" ></script>
+<script src="../../packages/js/highlight.min.js" ></script>
+<script >hljs.initHighlightingOnLoad();</script>
+
+<!-- 以下是为了生成文档的侧边栏 -->
+<script type="text/javascript" src="../../packages/generate_header_sidebar/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../packages/generate_header_sidebar/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="../../packages/generate_header_sidebar/src/ztree_toc.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+  $('#tree').ztree_toc({
+    is_auto_number : true,
+    use_head_anchor: true
+  });
+});
+//-->
+</SCRIPT>
+
+</body>
+</html>
+    

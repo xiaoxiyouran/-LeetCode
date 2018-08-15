@@ -1,0 +1,153 @@
+
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>xi's sidebar</title>
+	<link rel="stylesheet" type="text/css" href="../packages/doc_tree/jquery-tree/css/default.css">
+	<link rel="stylesheet" type="text/css" href="../packages/doc_tree/jquery-tree/css/Aimara.css">
+	<link rel="stylesheet" type="text/css" href="../packages/doc_tree/jquery-tree/css/Example.css">
+	<script id="testscript" src="../packages/doc_tree/jquery-tree/lib/Aimara.js" type="text/javascript" callBack=".."></script>
+	<script type="text/javascript">
+			window.onload = function() {
+
+				//Initializing Tree
+
+				//Tree Context Menu Structure
+				var contex_menu = {
+					'context1' : {
+						elements : [
+							{
+								text : 'Expand Subtree',
+								icon: 'images/tree.png',
+								action : function(node) {
+									node.expandSubtree();
+								},
+							},
+							{
+								text : 'Collapse Subtree',
+								icon: 'images/tree.png',
+								action : function(node) {
+									node.collapseSubtree();
+								}
+							}						
+						]
+					}
+				};
+
+				//Creating the tree
+				tree = createTree('div_tree','white',contex_menu);
+
+				// div_log = document.getElementById('div_log');
+
+				//Setting custom events
+				tree.nodeBeforeOpenEvent = function(node) {
+					// div_log.innerHTML += node.text + ': Before expand event<br/>';
+				}
+
+				tree.nodeAfterOpenEvent = function(node) {
+					// div_log.innerHTML += node.text + ': After expand event<br/>';
+				}
+
+				tree.nodeBeforeCloseEvent = function(node) {
+					// div_log.innerHTML += node.text + ': Before collapse event<br/>';
+				}
+
+				//Loop to create test nodes    
+    
+    _global_tree_html1 = tree.createNode("<a href = './global_tree.html' target = 'right'>global_tree.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,null,'context1');
+_001_Easy_两数之和1 = tree.createNode('001_Easy_两数之和',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_数组和hash_html2 = _001_Easy_两数之和1.createChildNode("<a href = './001_Easy_两数之和/数组和hash.html' target = 'right'>数组和hash.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_002_Medi_两数相加1 = tree.createNode('002_Medi_两数相加',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_链表_html2 = _002_Medi_两数相加1.createChildNode("<a href = './002_Medi_两数相加/链表.html' target = 'right'>链表.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_003_Medi_无重复字符的最长子串1 = tree.createNode('003_Medi_无重复字符的最长子串',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_字符串_html2 = _003_Medi_无重复字符的最长子串1.createChildNode("<a href = './003_Medi_无重复字符的最长子串/字符串.html' target = 'right'>字符串.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_004_Hard_两个排序数组的中位数1 = tree.createNode('004_Hard_两个排序数组的中位数',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_数组_html2 = _004_Hard_两个排序数组的中位数1.createChildNode("<a href = './004_Hard_两个排序数组的中位数/数组.html' target = 'right'>数组.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_005_Medi_最长回文子串1 = tree.createNode('005_Medi_最长回文子串',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_html2 = _005_Medi_最长回文子串1.createChildNode("<a href = './005_Medi_最长回文子串/string.html' target = 'right'>string.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_006_Medi_Z字形变换1 = tree.createNode('006_Medi_Z字形变换',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_html2 = _006_Medi_Z字形变换1.createChildNode("<a href = './006_Medi_Z字形变换/string.html' target = 'right'>string.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_007_Easy_反转整数1 = tree.createNode('007_Easy_反转整数',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_Number_html2 = _007_Easy_反转整数1.createChildNode("<a href = './007_Easy_反转整数/Number.html' target = 'right'>Number.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_008_Medi_字符串转整数atoi1 = tree.createNode('008_Medi_字符串转整数atoi',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_html2 = _008_Medi_字符串转整数atoi1.createChildNode("<a href = './008_Medi_字符串转整数atoi/string.html' target = 'right'>string.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_009_Easy_回文数1 = tree.createNode('009_Easy_回文数',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_number_html2 = _009_Easy_回文数1.createChildNode("<a href = './009_Easy_回文数/number.html' target = 'right'>number.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_010_Hard_正则表达式匹配1 = tree.createNode('010_Hard_正则表达式匹配',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_dp_html2 = _010_Hard_正则表达式匹配1.createChildNode("<a href = './010_Hard_正则表达式匹配/string_dp.html' target = 'right'>string_dp.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_011_Medi_盛最多水的容器1 = tree.createNode('011_Medi_盛最多水的容器',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _011_Medi_盛最多水的容器1.createChildNode("<a href = './011_Medi_盛最多水的容器/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_012_Medi_整数转罗马数字1 = tree.createNode('012_Medi_整数转罗马数字',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_number_html2 = _012_Medi_整数转罗马数字1.createChildNode("<a href = './012_Medi_整数转罗马数字/number.html' target = 'right'>number.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_013_Easy_罗马数字转整数1 = tree.createNode('013_Easy_罗马数字转整数',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_html2 = _013_Easy_罗马数字转整数1.createChildNode("<a href = './013_Easy_罗马数字转整数/string.html' target = 'right'>string.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_014_Easy_最长公共前缀1 = tree.createNode('014_Easy_最长公共前缀',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_array_html2 = _014_Easy_最长公共前缀1.createChildNode("<a href = './014_Easy_最长公共前缀/string_array.html' target = 'right'>string_array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_015_Medi_三数之和1 = tree.createNode('015_Medi_三数之和',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _015_Medi_三数之和1.createChildNode("<a href = './015_Medi_三数之和/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_016_Medi_最接近的三数之和1 = tree.createNode('016_Medi_最接近的三数之和',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _016_Medi_最接近的三数之和1.createChildNode("<a href = './016_Medi_最接近的三数之和/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_017_Medi_电话号码的字母组合1 = tree.createNode('017_Medi_电话号码的字母组合',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_html2 = _017_Medi_电话号码的字母组合1.createChildNode("<a href = './017_Medi_电话号码的字母组合/string.html' target = 'right'>string.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_018_Medi_四数之和1 = tree.createNode('018_Medi_四数之和',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _018_Medi_四数之和1.createChildNode("<a href = './018_Medi_四数之和/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_019_Medi_删除链表的倒数第N个节点1 = tree.createNode('019_Medi_删除链表的倒数第N个节点',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_ListNode_html2 = _019_Medi_删除链表的倒数第N个节点1.createChildNode("<a href = './019_Medi_删除链表的倒数第N个节点/ListNode.html' target = 'right'>ListNode.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_020_Easy_有效的括号1 = tree.createNode('020_Easy_有效的括号',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_string_stack_html2 = _020_Easy_有效的括号1.createChildNode("<a href = './020_Easy_有效的括号/string_stack.html' target = 'right'>string_stack.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_021_Easy_合并两个有序链表1 = tree.createNode('021_Easy_合并两个有序链表',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_ListNode_html2 = _021_Easy_合并两个有序链表1.createChildNode("<a href = './021_Easy_合并两个有序链表/ListNode.html' target = 'right'>ListNode.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_022_Medi_括号生成1 = tree.createNode('022_Medi_括号生成',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_string_递归_html2 = _022_Medi_括号生成1.createChildNode("<a href = './022_Medi_括号生成/array_string_递归.html' target = 'right'>array_string_递归.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_023_Hard_合并K个排序链表1 = tree.createNode('023_Hard_合并K个排序链表',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_ListNode_html2 = _023_Hard_合并K个排序链表1.createChildNode("<a href = './023_Hard_合并K个排序链表/ListNode.html' target = 'right'>ListNode.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_024_Medi_两两交换链表中的节点1 = tree.createNode('024_Medi_两两交换链表中的节点',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_ListNode_html2 = _024_Medi_两两交换链表中的节点1.createChildNode("<a href = './024_Medi_两两交换链表中的节点/ListNode.html' target = 'right'>ListNode.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_025_Hard_K个一组翻转链表1 = tree.createNode('025_Hard_K个一组翻转链表',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_ListNode_html2 = _025_Hard_K个一组翻转链表1.createChildNode("<a href = './025_Hard_K个一组翻转链表/ListNode.html' target = 'right'>ListNode.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_026_Easy_删除排序数组中的重复项1 = tree.createNode('026_Easy_删除排序数组中的重复项',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _026_Easy_删除排序数组中的重复项1.createChildNode("<a href = './026_Easy_删除排序数组中的重复项/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_027_Easy_移除元素1 = tree.createNode('027_Easy_移除元素',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _027_Easy_移除元素1.createChildNode("<a href = './027_Easy_移除元素/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_028_Easy_实现strStr__函数1 = tree.createNode('028_Easy_实现strStr()函数',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_array_html2 = _028_Easy_实现strStr__函数1.createChildNode("<a href = './028_Easy_实现strStr()函数/array.html' target = 'right'>array.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,'context1');
+_unmd1 = tree.createNode('unmd',false,'../packages/doc_tree/jquery-tree/images/folder.png',null,null,'context1');
+_CPP常用函数和注意事项_html1 = tree.createNode("<a href = './CPP 常用函数和注意事项.html' target = 'right'>CPP 常用函数和注意事项.html</a>",false,'../packages/doc_tree/jquery-tree/images/file.png',null,null,'context1');
+
+				//Rendering the tree
+				tree.drawTree();
+			};
+
+			function expand_all() {
+				tree.expandTree();
+			}
+
+			function clear_log() {
+				// document.getElementById('div_log').innerHTML = '';
+			}
+
+			function collapse_all() {
+				tree.collapseTree();
+			}
+		</script>
+	<!--[if IE]>
+		<script src="../packages/doc_tree/jquery-tree/lib/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="htmleaf-container">
+		<div class="htmleaf-content">			
+			<button onclick="expand_all()">Expand</button>
+			<button onclick="collapse_all()">Collapse</button>
+			<br>
+			<div id="div_tree"></div>
+		</div>
+		
+</div>
+
+</body>
+</html>    
+    
