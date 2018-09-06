@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<title>030 与所有单词相关联的字串</title>
+	<meta name="keywords" content="xiaoxiyouran" />
+	<meta name="description" content="xiaoxiyouran's Docs" />
+	<link href="../../packages/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../../packages/css/style.css" rel="stylesheet" />
+	<link href="../../packages/css/monokai_sublime.min.css" rel="stylesheet">
+	
+	<!-- 右上角的侧边导航栏 -->
+	<link rel="stylesheet" href="../../packages/hock_side_bar/css/sidebar.css"> <!--初始化文件-->
+	<script src="../../packages/hock_side_bar/js/sidebar.js"></script> <!--rem适配js-->
+	
+	<!--
+	<link href="<?php echo $base_url?>/css/bootstrap-theme.min.css" rel="stylesheet" />
+	-->
+	
+	<!-- To generate the side tree of the document itself. -->
+  <link rel="stylesheet" href="../../packages/generate_header_sidebar/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <style>
+  body {
+  background-color: white;
+  margin:0; padding:0;
+  // text-align: center;
+  overflow: scroll;
+  }
+  div, p, table, th, td {
+    list-style:none;
+    margin:8px; padding:0;
+    color:#333; font-size:12px;
+   Font-family: Helvetica, Tahoma, Arial, STXihei, “华文细黑”, “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, Heiti, “黑体”, sans-serif;
+  }
+  
+ // table{
+ //   border-collapse:collapse;
+ // }
+
+  //table, td, th{
+  //  border:1px solid black;   
+  //}
+  
+  .ztree li a.curSelectedNode {
+    padding-top: 0px;
+    background-color: #FFE6B0;
+    color: black;
+    height: 16px;
+    border: 1px #FFB951 solid;
+    opacity: 0.8;
+  }
+  .ztree{
+    overflow: auto;
+    height:100%;
+    min-height: 200px;
+    top: 0px;
+  }
+  </style>
+
+<!--
+  For Latex formula
+-->
+<!--
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\(","\)"]]}
+  });
+</script>
+-->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"]]}
+  });
+</script>
+ <script type="text/javascript" src="../../packages/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<!-- mermaid 画图 -->
+ <link rel="stylesheet" href="../../packages/mermaid-7.0.0/dist/mermaid.forest.css"/>
+ <script src="../../packages/mermaid-7.0.0/dist/mermaid.js"></script>
+ <script src="../../packages/mermaid-7.0.0/dist/dist/mermaid.full.js"></script>
+ <!-- <scrpt src="../../packages/mermaid-7.0.0/node_modules/d3/d3.js"></scrpt> -->
+ <!-- <script>mermaid.initialize({startOnLoad:true});</script>  -->
+ <script>
+	//browserify --entry src/mermaid.js -u d3 -o ./dist/mermaid.brow.slim.js
+			var mermaid_config = {
+					startOnLoad:true
+			}
+			mermaid.ganttConfig = {
+					titleTopMargin:25,
+					barHeight:20,
+					barGap:4,
+					topPadding:50,
+					leftPadding:75,
+					gridLineStartPadding:35,
+					fontSize:11,
+					numberSectionStyles:3,
+					axisFormatter: [
+							// Within a day
+							["%I:%M", function (d) {
+									return d.getHours();
+							}],
+							// Monday a week
+							["w. %U", function (d) {
+									return d.getDay() == 1;
+							}],
+							// Day within a week (not monday)
+							["%a %d", function (d) {
+									return d.getDay() && d.getDate() != 1;
+							}],
+							// within a month
+							["%b %d", function (d) {
+									return d.getDate() != 1;
+							}],
+							// Month
+							["%m-%y", function (d) {
+									return d.getMonth();
+							}]
+					]
+			};
+	</script>
+
+</head>
+<body>
+<!-- 右上角的悬浮 sidebar  -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <a href="#"> 目录 </a>
+   <iframe id="ha" src=" global_sidebar.html" name='left' frameborder="0" scrolling="auto" width="400"  height="100%">
+    您的浏览器不支持iframe，请升级
+   </iframe>  
+</div>
+
+<TABLE border=0 height=600px align=left>
+  <TR>
+    <TD width=260px align=left valign=top style="BORDER-RIGHT: #999999 1px dashed">
+      <ul id="tree" class="ztree">
+        
+      </ul>
+    </TD>
+    <TD width=770px align=left valign=top>
+
+<!---------------------------------------------------------------------------------------------------------------------------->
+<div class="container">
+<span style="font-size:20px;cursor:pointer;z-index: 9999; position: fixed; right: 0px; top: 0px;" onclick="openNav()">&#9776; 目录</span>
+ 
+<h1 id="030">030 与所有单词相关联的字串</h1>
+<h2 id="_1">链接和考点</h2>
+<table style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>
+<thead>
+<tr>
+<th style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>LeetCode</th>
+<th style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/description/</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>考点</td>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>string,vector, map</td>
+</tr>
+<tr>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>难度</td>
+<td style='border: 1px solid black; border-collapse:collapse;  border-spacing:0;'>Hard</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="_2">题意</h2>
+<hr />
+<p>给定一个字符串 <strong>s</strong> 和一些<strong>长度相同的单词</strong> <strong>words。</strong>在 <strong>s</strong> 中找出可以恰好串联 <strong>words</strong> 中所有单词的子串的起始位置。</p>
+<p>注意子串要与 <strong>words</strong> 中的单词完全匹配，中间不能有其他字符，但不需要考虑 <strong>words</strong> 中单词串联的顺序。</p>
+<p><strong>示例 1:</strong></p>
+<pre><code>输入:
+  s = &quot;barfoothefoobarman&quot;,
+  words = [&quot;foo&quot;,&quot;bar&quot;]
+输出: [0,9]
+解释: 从索引 0 和 9 开始的子串分别是 &quot;barfoor&quot; 和 &quot;foobar&quot; 。
+输出的顺序不重要, [9,0] 也是有效答案。
+</code></pre>
+
+<p><strong>示例 2:</strong></p>
+<pre><code>输入:
+  s = &quot;wordgoodstudentgoodword&quot;,
+  words = [&quot;word&quot;,&quot;student&quot;]
+输出: []
+</code></pre>
+
+<hr />
+<p><br></p>
+<h2 id="_3">分析</h2>
+<p>由于题目是长度相同的单词，以单词的长度开始，依次查找。</p>
+<p>建立左右两个指针，构成一个窗口， 这个窗口可能包含多个重复的元素，这时将左指针向右移动，直到窗口里的单词的个数依次等于目标查找里的个数；</p>
+<p>第一步是检查是否是候选单词， 第二步是检查窗口里的单词没有多的，第三步是<strong>在第二步保证没有多余的重复单词的前提下</strong>，这时窗口的长度恰好等于需要组合的单词长度，即为找到了一个组合。</p>
+<p><br></p>
+<h2 id="_4">参考答案</h2>
+<p>时间复杂度：</p>
+<p>空间复杂度：</p>
+<p>答案如下：</p>
+<p>C++ 版本如下：</p>
+<pre><code class="cpp">class Solution{
+public:
+	vector&lt;int&gt; findSubstring(string S, vector&lt;string&gt; &amp;L) {
+		vector&lt;int&gt; res;
+		map&lt;string, int&gt; traits;
+
+		if (L.empty() || S.empty()) return res;
+
+		for (auto s : L)
+			traits[s]++;
+		int len = L[0].length();
+
+		for (int i = 0; i &lt; len; i++) {
+			map&lt;string, int&gt; window;
+
+			int l = i;
+			int r = i;
+			while (r &lt; S.length()) {
+				// step 1
+				while (r &lt; S.length()) {
+					string word = S.substr(r, len);
+					r += len;
+					if (traits.find(word) == traits.end()) {    // 如果没有这个字符串
+						window.clear();                         // 清空窗口重新来
+						l = r;
+					}
+					else {
+						window[word]++;                         // 又开始存有相同的字符串
+						if (window[word] &gt;= traits[word])       // 如果个数足够【但也有可能出现次数太多了】，比如两个连续foofoo,跳到第3步，可能构成一组解
+							break;
+					}
+				}
+
+				// step2: 缩小范围
+				while (l &lt; r) {
+					string head = S.substr(l, len);
+					string tail = S.substr(r - len, len);
+					if (window[tail] == traits[tail])           // 要重复一定是尾部重复（因为新来的就是在尾部啊【可以假设刚开始只有我一个，肯定是没有重复的】）foo bar foo(重复) or foo bar bar(bar重复，l会移动两次)
+						break;
+					l += len;
+					window[head]--;
+				}
+
+				// step3: 检查是否是一组解
+				if (r - l == len * L.size()) {
+					res.push_back(l);
+				}
+			}
+		}
+
+		return res;
+	}
+
+};
+
+
+</code></pre>
+
+<p><br></p>
+
+
+<hr/>
+<div class="footer">
+	Copyright &copy; xiaoxiyouran. All rights reserved.
+
+</div>
+
+</div> <!-- /container -->
+
+<!---------------------------------------------------------------------------------------------------------------------------->
+
+        </TD>
+  </TR>
+</TABLE>
+
+<!-- 请注意，以下两个部分的代码执行是有顺序的，必须严格按照这个顺序来。另外，放在底部是为了优化界面，使加载速度更快 -->
+<!-- 为了优化代码风格 -->
+<script src="../../packages/js/jquery-1.9.1.min.js" ></script>
+<script src="../../packages/js/bootstrap.min.js" ></script>
+<script src="../../packages/js/highlight.min.js" ></script>
+<script >hljs.initHighlightingOnLoad();</script>
+
+<!-- 以下是为了生成文档的侧边栏 -->
+<script type="text/javascript" src="../../packages/generate_header_sidebar/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../packages/generate_header_sidebar/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="../../packages/generate_header_sidebar/src/ztree_toc.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+  $('#tree').ztree_toc({
+    is_auto_number : true,
+    use_head_anchor: true
+  });
+});
+//-->
+</SCRIPT>
+
+</body>
+</html>
+    
